@@ -8,7 +8,6 @@
 
 > **Note:** The plugin UI is currently in Spanish. English localization is planned.
 
-=======
 ---
 
 ## The problem
@@ -35,8 +34,6 @@ When you export a note to PDF in Obsidian, screenshots, code blocks, and tables 
 ![Zona de riesgo de corte](assets/screenshot2-risk-zone.png)
 
 ![Modal de calibración](assets/screenshot3-calibration.png)
-
-=======
 
 ---
 
@@ -78,11 +75,7 @@ Your note switches to a Word-style layout:
 | White rectangle | One PDF page |
 | `Página X / Y` pill (top right) | Current page — updates live as you scroll and type |
 | Red tinted zone (bottom of each page) | Risk zone — content here may get cut |
-
 | `Calibrar` button (inside the pill) | One-click auto-calibration |
-=======
-| **Calibrar** button (inside the pill) | One-click auto-calibration |
-
 
 If you switch between Editor and Reading View while the overlay is active, it re-attaches automatically.
 
@@ -177,7 +170,6 @@ Once calibrated, the value persists across all your notes.
 
 ---
 
-
 ## Known issues
 
 - **Page count is off with make.md or similar plugins** — these plugins modify the editor DOM and inflate the content height. Use auto-calibration to fix it.
@@ -214,6 +206,16 @@ Once calibrated, the value persists across all your notes.
 
 ---
 
+## Roadmap
+
+- [ ] English localization
+- [ ] Custom page size input (arbitrary mm values)
+- [ ] Per-note margin configuration via frontmatter
+- [ ] Visual ruler showing distance to the next page break
+- [ ] Community plugin registry submission
+
+---
+
 ## Contributing
 
 Pull requests and issues are welcome. If you find a case where the page boundaries don't match your PDF output after calibration, please open an issue including:
@@ -234,5 +236,3 @@ MIT — see [LICENSE](LICENSE) for details.
 ---
 
 *Built to scratch an itch while documenting CTFs and security labs in Obsidian. If it's useful for you too, a star goes a long way ⭐*
-=======
-
