@@ -1,0 +1,250 @@
+/* ============================================================
+   PDF Page Break v2.2 — styles.css
+   ============================================================ */
+
+/* ── Manual page break block ─────────────────────────────────────────────── */
+
+.pdf-page-break-wrapper {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0.2em 0 !important;
+  box-shadow: none !important;
+}
+
+.pdf-page-break-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.1em 0;
+  user-select: none;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+.pdf-page-break-indicator:hover { opacity: 0.85; }
+
+.pdf-pb-line { flex: 1; border-top: 2px dashed var(--text-faint); }
+.pdf-pb-label {
+  font-size: 0.72em;
+  font-family: var(--font-monospace);
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.1em 0.5em;
+  border: 1px dashed var(--text-faint);
+  border-radius: 3px;
+}
+
+.pdf-page-break-actual { display: none; }
+
+/* ── Print ───────────────────────────────────────────────────────────────── */
+
+@media print {
+  .pdf-page-break-indicator { display: none !important; }
+  .pdf-page-break-actual {
+    display: block !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    height: 0 !important;
+    margin: 0 !important; padding: 0 !important;
+    visibility: hidden !important;
+  }
+  .pdf-page-break-wrapper { margin: 0 !important; }
+  p { orphans: 3; widows: 3; }
+  a, li, figure, .media-embed { page-break-inside: avoid; break-inside: avoid; }
+  .plv-overlay,
+  .plv-indicator { display: none !important; }
+}
+
+/* ── Page Layout View: scroll container (gray background) ────────────────── */
+
+.plv-scroll-active {
+  background: #b0b0b0 !important;
+}
+
+/* Dark theme — Obsidian uses data-theme="dark" on <body> */
+.theme-dark .plv-scroll-active {
+  background: #555 !important;
+}
+
+/* ── Content raised above the overlay ────────────────────────────────────── */
+
+.plv-content-active {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ── Overlay: hosts page rectangles, sits behind content ─────────────────── */
+
+.plv-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  /* height auto-matches the scroll area via inset */
+}
+
+/* ── White page rectangle ─────────────────────────────────────────────────── */
+
+.plv-page-rect {
+  position: absolute;
+  background: var(--background-primary);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(0,0,0,0.08);
+  /* overflow hidden so the warning zone doesn't escape the page rect */
+  overflow: hidden;
+}
+
+.theme-dark .plv-page-rect {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255,255,255,0.08);
+}
+
+/* ── Page number label inside the rect ───────────────────────────────────── */
+
+.plv-page-num {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  font-size: 11px;
+  font-family: var(--font-monospace);
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Gutter strip between pages ──────────────────────────────────────────── */
+
+.plv-gutter-strip {
+  position: absolute;
+  background: #b0b0b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.theme-dark .plv-gutter-strip {
+  background: #555;
+}
+
+.plv-gutter-label {
+  font-size: 10px;
+  font-family: var(--font-monospace);
+  color: #888;
+  letter-spacing: 0.1em;
+  user-select: none;
+  opacity: 0.8;
+}
+
+/* ── Warning zone: last 15% of each page ─────────────────────────────────── */
+
+.plv-warn-zone {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(220, 60, 60, 0.045);
+  border-top: 1.5px dashed rgba(200, 60, 60, 0.35);
+  pointer-events: none;
+}
+
+.plv-warn-label {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  font-size: 10px;
+  font-family: var(--font-monospace);
+  color: rgba(200, 60, 60, 0.6);
+  user-select: none;
+}
+
+/* ── Sticky "Página X / Y" indicator ────────────────────────────────────── */
+/* Uses position:sticky so it floats at the top of the viewport while scrolling */
+
+.plv-indicator {
+  position: sticky;
+  top: 10px;
+  /* Float to the right side, above everything */
+  z-index: 50;
+  float: right;
+  margin-right: 12px;
+
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  font-size: 11.5px;
+  font-family: var(--font-monospace);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  opacity: 0.88;
+  pointer-events: none;
+  user-select: none;
+  /* Smooth text updates */
+  transition: opacity 0.15s ease;
+}
+
+/* ── Ribbon button active state ──────────────────────────────────────────── */
+
+.plv-ribbon-active {
+  color: var(--interactive-accent) !important;
+}
+
+/* ── Settings hint box ──────────────────────────────────────────────────── */
+
+.pdf-pb-settings-hint {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 1em 1.3em;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+.pdf-pb-settings-hint kbd {
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+}
+
+/* ── Calibration button inside the indicator pill ─────────────────────────── */
+
+.plv-cal-btn {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 10px;
+  font-family: var(--font-monospace);
+  font-weight: 600;
+  padding: 1px 7px;
+  cursor: pointer;
+  pointer-events: all;
+  margin-left: 6px;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+}
+.plv-cal-btn:hover { background: rgba(255,255,255,0.4); }
+
+/* ── Calibration modal ────────────────────────────────────────────────────── */
+
+.plv-cal-modal h2 { margin-bottom: 0.6em; font-size: 1.1em; }
+.plv-cal-modal p  { margin-bottom: 1em; color: var(--text-muted); font-size: 0.95em; }
+.plv-cal-row      { margin-bottom: 1.2em; }
+.plv-cal-row label { display: block; font-size: 0.9em; margin-bottom: 0.3em; }
+.plv-cal-input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 1em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+}
+.plv-cal-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 0.5em; }

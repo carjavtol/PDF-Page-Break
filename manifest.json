@@ -1,0 +1,10 @@
+{
+  "id": "pdf-page-break",
+  "name": "PDF Page Break",
+  "version": "2.3.1",
+  "minAppVersion": "0.15.0",
+  "description": "Control page breaks when exporting to PDF. Prevents images, code blocks and tables from being cut, and lets you insert manual page breaks.",
+  "author": "Carla Javaloyes Toledo",
+  "authorUrl": "https://github.com/carjavtol/PDF-Page-Break",
+  "isDesktopOnly": true
+}
