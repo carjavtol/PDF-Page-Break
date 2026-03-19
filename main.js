@@ -127,12 +127,10 @@ class CalibrationModal extends Modal {
         const clamped = Math.min(1.5, Math.max(0.5, newScale));
         this.plugin.settings.scaleCorrection = clamped;
         await this.plugin.saveSettings();
-        new Notice(`✓ Escala ajustada a ${clamped.toFixed(3)}. Ahora debería mostrar ${real} páginas.`);
+        new Notice(`✓ Escala ajustada a ${clamped.toFixed(3)}. El plugin ahora debería mostrar ${real} páginas.`);
         this.close();
-        // Force a synchronous full re-render so the user sees the change immediately
-        if (this.plugin.plm.active) {
-          this.plugin.plm._render();
-        }
+        // Re-render if layout view is active
+        if (this.plugin.plm.active) this.plugin.plm._scheduleRender();
       });
 
     new ButtonComponent(btnRow)
