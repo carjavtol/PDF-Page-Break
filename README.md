@@ -214,19 +214,6 @@ Once calibrated, the value persists across all your notes.
 
 ---
 
-## Roadmap
-
-- [ ] English localization
-=======
-## Roadmap
-
-- [ ] Custom page size input (arbitrary mm values)
-- [ ] Per-note margin configuration via frontmatter
-- [ ] Visual ruler showing distance to the next page break
-- [ ] Community plugin registry submission
-
----
-
 ## Contributing
 
 Pull requests and issues are welcome. If you find a case where the page boundaries don't match your PDF output after calibration, please open an issue including:
