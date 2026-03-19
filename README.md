@@ -6,11 +6,9 @@
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 ![Version](https://img.shields.io/badge/version-2.3.1-green?style=flat-square)
 
-<<<<<<< HEAD
 > **Note:** The plugin UI is currently in Spanish. English localization is planned.
 
 =======
->>>>>>> 24a568161290493a9bdc1d67ff3afe583c81add1
 ---
 
 ## The problem
@@ -30,7 +28,6 @@ When you export a note to PDF in Obsidian, screenshots, code blocks, and tables 
 
 > *Page Layout View active in Live Preview mode. White rectangles represent individual PDF pages. The red tinted zone at the bottom of each page indicates where content risks being cut. The blue pill top-right shows the current page and includes the calibration button.*
 
-<<<<<<< HEAD
 > Screenshots are in the `assets/` folder of this repository.
 
 ![Page Layout View activo en el editor](assets/screenshot1-page-layout.png)
@@ -40,7 +37,7 @@ When you export a note to PDF in Obsidian, screenshots, code blocks, and tables 
 ![Modal de calibración](assets/screenshot3-calibration.png)
 
 =======
->>>>>>> 24a568161290493a9bdc1d67ff3afe583c81add1
+
 ---
 
 ## Installation
@@ -81,11 +78,11 @@ Your note switches to a Word-style layout:
 | White rectangle | One PDF page |
 | `Página X / Y` pill (top right) | Current page — updates live as you scroll and type |
 | Red tinted zone (bottom of each page) | Risk zone — content here may get cut |
-<<<<<<< HEAD
+
 | `Calibrar` button (inside the pill) | One-click auto-calibration |
 =======
 | **Calibrar** button (inside the pill) | One-click auto-calibration |
->>>>>>> 24a568161290493a9bdc1d67ff3afe583c81add1
+
 
 If you switch between Editor and Reading View while the overlay is active, it re-attaches automatically.
 
@@ -180,7 +177,7 @@ Once calibrated, the value persists across all your notes.
 
 ---
 
-<<<<<<< HEAD
+
 ## Known issues
 
 - **Page count is off with make.md or similar plugins** — these plugins modify the editor DOM and inflate the content height. Use auto-calibration to fix it.
@@ -223,7 +220,6 @@ Once calibrated, the value persists across all your notes.
 =======
 ## Roadmap
 
->>>>>>> 24a568161290493a9bdc1d67ff3afe583c81add1
 - [ ] Custom page size input (arbitrary mm values)
 - [ ] Per-note margin configuration via frontmatter
 - [ ] Visual ruler showing distance to the next page break
@@ -250,8 +246,6 @@ MIT — see [LICENSE](LICENSE) for details.
 
 ---
 
-<<<<<<< HEAD
 *Built to scratch an itch while documenting CTFs and security labs in Obsidian. If it's useful for you too, a star goes a long way ⭐*
 =======
-*Built to scratch an itch while documenting CTFs and security labs in Obsidian. If it's useful for you too, a star goes a long way ⭐*
->>>>>>> 24a568161290493a9bdc1d67ff3afe583c81add1
+
